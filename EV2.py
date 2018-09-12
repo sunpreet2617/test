@@ -21,17 +21,7 @@ for row in sh['A{}:A{}'.format(sh.min_row+1,sh.max_row)]:
 			#raise ValueError('Bad Syntax')
 
 		resolver = dns.resolver.Resolver()
-        while line:
-        ip = re.search(r"\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b", line)
-        if ip:
-            resolver.nameservers = [ip.group(0)]
-            try:
-                result = resolver.query('opnfv.org')[0]
-                if result != "":
-                    nameservers.append(ip.group())
-            except dns.exception.Timeout:
-                continue
-                records = dns.resolver.query('lambdadirect.com','MX')
+        records = dns.resolver.query('lambdadirect.com','MX')
 		mxRecord = records[0].exchange
 		mxRecord = str(mxRecord)
      	
