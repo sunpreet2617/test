@@ -6,13 +6,13 @@ import smtplib
 
 from openpyxl import load_workbook
 
-wb = load_workbook('test.xlsx', data_only=True)
+wb = load_workbook('test1.xlsx', data_only=True)
 sh = wb["Sheet1"]
 
 for row in sh['A{}:A{}'.format(sh.min_row + 1, sh.max_row)]:
     for cell in row:
         try:
-            wb.save('test.xlsx')
+            wb.save('test1.xlsx')
             addressToVerify = cell.value
             match = re.match('^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$', addressToVerify)
             if match == None:
@@ -53,5 +53,5 @@ for row in sh['A{}:A{}'.format(sh.min_row + 1, sh.max_row)]:
         except Exception as e:
             print("error",e," for address ",addressToVerify)
 
-wb.save('test.xlsx')
+wb.save('test1.xlsx')
 print("Done")
