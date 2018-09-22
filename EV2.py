@@ -19,7 +19,7 @@ for row in sh['A{}:A{}'.format(sh.min_row + 1, sh.max_row)]:
                 print('Bad Syntax for ' + addressToVerify)
 
             resolver = dns.resolver.Resolver()
-            records = dns.resolver.query('lambdatest.com', 'MX')
+            records = dns.resolver.query('lambdadirect.com', 'MX')
 
             mxRecord = records[0].exchange
             mxRecord = str(mxRecord)
